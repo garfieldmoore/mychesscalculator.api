@@ -13,9 +13,11 @@ apiRouter.route('/games')
 app.use('/api', apiRouter);
 
 app.get('/', (req, res) => {
-  res.send('Welcome to my API!')
+  res.send('Chess grade calculator V1.  Access API at /api')
 })
 
-app.listen(3000, () => {
-  console.log('Chess server listening on port 3000!')
-})
+var port = process.env.PORT || 3000;
+
+var server = app.listen(port, function () {
+    console.log('Server running at http://127.0.0.1:' + port + '/');
+});
