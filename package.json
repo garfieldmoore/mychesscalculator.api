@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/garfieldmoore/mychesscalculator.api#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "gulp": "^3.9.1",
     "require": "^2.4.20"
