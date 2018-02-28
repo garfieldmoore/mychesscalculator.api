@@ -23,6 +23,14 @@ apiRouter.route('/games')
     console.log(req.body);
   });
 
+apiRouter.route('/rating')
+    .get(function(req, res){
+      console.log("ENTER: GET /rating");
+      // persist to local storage
+      console.log(req.body);
+
+    });
+
   //CORS middleware
   var allowCrossDomain = function(req, res, next) {
       res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
