@@ -1,13 +1,13 @@
 describe("Calculating ECF drawn games", () => {
 
   beforeEach(function() {
-    module('ratingsApp');
+
   });
 
   var chessGradeCalculator;
-  beforeEach(inject(['chessGradeCalculator', function(service) {
-    chessGradeCalculator = service;
-  }]));
+  beforeEach(function() {
+    chessGradeCalculator = new ChessGradeCalculator();
+  });
 
   it('calculate should return players current grade when no games have been played', () => {
 

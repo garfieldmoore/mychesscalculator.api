@@ -1,13 +1,12 @@
 describe("FIDE ELO wins", () => {
 
   beforeEach(function() {
-    module('ratingsApp');
   });
 
   var chessGradeCalculator;
-  beforeEach(inject(['chessGradeCalculator', function(service) {
-    chessGradeCalculator = service;
-  }]));
+  beforeEach(function() {
+    chessGradeCalculator = chessGradeCalculator;
+  });
 
 
   it('should calcuate a 2000 player beating a 2400 player twice as having new FIDE elo of 2037', () => {

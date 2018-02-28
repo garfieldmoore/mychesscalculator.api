@@ -1,13 +1,12 @@
 describe("USCF ELO wins", () => {
 
   beforeEach(function() {
-    module('ratingsApp');
   });
 
   var chessGradeCalculator;
-  beforeEach(inject(['chessGradeCalculator', function(service) {
-    chessGradeCalculator = service;
-  }]));
+  beforeEach(function() {
+    chessGradeCalculator = chessGradeCalculator;
+  });
 
   it('should calcuate a 2000 player beating a 1953 player as having new USCF elo of 2009', () => {
 

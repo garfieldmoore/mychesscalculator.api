@@ -1,13 +1,12 @@
 describe("ECF Maximum grade difference rule", () => {
 
   beforeEach(function() {
-    module('ratingsApp');
   });
 
   var chessGradeCalculator;
-  beforeEach(inject(['chessGradeCalculator', function(service) {
+  beforeEach(function() {
     chessGradeCalculator = service;
-  }]));
+  });
 
   it('grade should increase to 145 when a 100 grade beats a 150 grade ', () => {
 

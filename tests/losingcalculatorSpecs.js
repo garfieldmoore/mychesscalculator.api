@@ -1,13 +1,12 @@
 describe("ECF losing games", () => {
 
   beforeEach(function() {
-    module('ratingsApp');
   });
 
   var chessGradeCalculator;
-  beforeEach(inject(['chessGradeCalculator', function(service) {
+  beforeEach(function() {
     chessGradeCalculator = service;
-  }]));
+  });
 
   it('grade should decrease to 85 when a 100 grade loses to a 120 grade', () => {
 

@@ -1,5 +1,10 @@
 'use strict';
-app.factory('chessGradeCalculator', function() {
+module.exports={
+  calculateFide:calculateFide,
+  calculateUscf:calculateUscf,
+  calculateEcf:calculateEcf,
+};
+
   var kfactor = 10;
 
   function IsValid(currentgrade) {
@@ -193,6 +198,19 @@ app.factory('chessGradeCalculator', function() {
     }
   }
 
+  function calculateEcf(currentgrade, games) {
+    return calculate(currentgrade, games, 'ECF', player1kFactor);
+  }
+
+  function calculateUscf(currentgrade, games, player1kFactor) {
+    return calculate(currentgrade, games, 'USCF', player1kFactor);
+
+  }
+
+  function calculateFide(currentgrade, games, player1kFactor) {
+    return calculate(currentgrade, games, 'FIDE', player1kFactor);
+  }
+
   function calculate(currentgrade, games, chessFederation, player1kFactor) {
     console.log('Current Grade:' + currentgrade);
 
@@ -201,9 +219,3 @@ app.factory('chessGradeCalculator', function() {
 
     return calculation.CalculationFrom(currentgrade, games, kfactor);
   }
-
-  return {
-    createFor: createFor,
-    calculate: calculate,
-  };
-});

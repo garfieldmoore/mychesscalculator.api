@@ -1,4 +1,5 @@
 var express = require('express');
+var chessGradeCalculator = require('./js/services/ChessGradeCalculator');
 
 var app = express();
 
@@ -34,34 +35,50 @@ apiRouter.route('/games')
 apiRouter.route('/rating/ecf')
     .get(function(req, res){
       console.log("ENTER: GET /rating/ecf");
-      // persist to local storage
       console.log(req.body);
-       dataStore.getGames();
-      // perform calculation
 
-      res.json({rating: 200});
+      var currentGrade = parseInt(req.query.currentgrade);
+      console.log("query currentGrade: " + currentGrade);
+
+      var rating=chessGradeCalculator.calculateEcf(currentGrade, dataStore.getGames());
+
+       res.json({rating: rating});
     });
 
   apiRouter.route('/rating/fide')
       .get(function(req, res){
         console.log("ENTER: GET /rating/fide");
-        // persist to local storage
-        console.log(req.body);
-         dataStore.getGames();
-        // perform calculation
 
-        res.json({rating: 2000});
+        var currentGrade = parseInt(req.query.currentgrade);
+        console.log("query currentGrade: " + currentGrade);
+        var kfactor=req.query.kfactor;
+        console.log("Kfactor: " + kfactor);
+
+        if (kfactor == undefined){
+          kfactor=20; //default
+        }
+
+        var rating=chessGradeCalculator.calculateFide(currentGrade, dataStore.getGames(), kfactor);
+
+        res.json({rating: rating});
       });
 
   apiRouter.route('/rating/uscf')
       .get(function(req, res){
         console.log("ENTER: GET /rating/uscf");
         // persist to local storage
-        console.log(req.body);
-         dataStore.getGames();
-        // perform calculation
+        var currentGrade = parseInt(req.query.currentgrade);
+        console.log("query currentGrade: " + currentGrade);
+        var kfactor=req.query.kfactor;
+        console.log("Kfactor: " + kfactor);
 
-        res.json({rating: 2100});
+        if (kfactor == undefined){
+          kfactor=20; //default
+        }
+
+        var rating=chessGradeCalculator.calculateUscf(currentGrade, dataStore.getGames(), kfactor);
+
+        res.json({rating: rating});
       });
 
 
