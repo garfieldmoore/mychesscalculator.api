@@ -100,5 +100,8 @@ app.get('/', (req, res) => {
 var port = process.env.PORT || 3000;
 
 var server = app.listen(port, function () {
-    console.log('Server running at http://127.0.0.1:' + port + '/');
+  console.log("Starting Chess API Server");
+  console.log('Setting the port to listen on from env.PORT (defaults to 3000)');
+  console.log('Server running at http://127.0.0.1:' + port + '/');
+
 });
