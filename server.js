@@ -31,16 +31,39 @@ apiRouter.route('/games')
 
   });
 
-apiRouter.route('/rating')
+apiRouter.route('/rating/ecf')
     .get(function(req, res){
-      console.log("ENTER: GET /rating");
+      console.log("ENTER: GET /rating/ecf");
       // persist to local storage
       console.log(req.body);
        dataStore.getGames();
       // perform calculation
 
-      res.json({rating: 3000});
+      res.json({rating: 200});
     });
+
+  apiRouter.route('/rating/fide')
+      .get(function(req, res){
+        console.log("ENTER: GET /rating/fide");
+        // persist to local storage
+        console.log(req.body);
+         dataStore.getGames();
+        // perform calculation
+
+        res.json({rating: 2000});
+      });
+
+  apiRouter.route('/rating/uscf')
+      .get(function(req, res){
+        console.log("ENTER: GET /rating/uscf");
+        // persist to local storage
+        console.log(req.body);
+         dataStore.getGames();
+        // perform calculation
+
+        res.json({rating: 2100});
+      });
+
 
   //CORS middleware
   var allowCrossDomain = function(req, res, next) {
