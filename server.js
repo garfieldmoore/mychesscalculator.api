@@ -1,6 +1,6 @@
 var express = require('express');
-var chessGradeCalculator = require('./js/services/ChessGradeCalculator');
-
+var ChessGradeCalculator = require('./js/services/ChessGradeCalculator');
+var chessGradeCalculator = new ChessGradeCalculator();
 var app = express();
 
 var bodyParser = require('body-parser');
