@@ -1,12 +1,8 @@
+var ChessGradeCalculator=require('../../js/services/ChessGradeCalculator');
+
 describe("USCF ELO wins", () => {
 
-  beforeEach(function() {
-  });
-
-  var chessGradeCalculator;
-  beforeEach(function() {
-    chessGradeCalculator = chessGradeCalculator;
-  });
+  var chessGradeCalculator = new ChessGradeCalculator();
 
   it('should calcuate a 2000 player beating a 1953 player as having new USCF elo of 2009', () => {
 
@@ -16,7 +12,7 @@ describe("USCF ELO wins", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate(2000, games, 'ELO', 20);
+    var grade = chessGradeCalculator.calculateUscf(2000, games, 20);
     expect(grade).toEqual(2009, "grade increases");
   });
 
@@ -28,7 +24,7 @@ describe("USCF ELO wins", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate('2000', games, 'ELO', 20);
+    var grade = chessGradeCalculator.calculateUscf('2000', games, 20);
     expect(grade).toBeGreaterThan(2000, "should be a number");
   });
 });

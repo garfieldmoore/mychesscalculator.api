@@ -1,18 +1,18 @@
+var ChessGradeCalculator=require('../js/services/ChessGradeCalculator');
+
 describe("Calculating ECF drawn games", () => {
 
-  beforeEach(function() {
-
-  });
-
   var chessGradeCalculator;
-  beforeEach(function() {
-    chessGradeCalculator = new ChessGradeCalculator();
+
+  beforeEach(function () {
+    chessGradeCalculator= new ChessGradeCalculator();
   });
 
   it('calculate should return players current grade when no games have been played', () => {
 
-    var grade = chessGradeCalculator.calculate(102, [], 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(102, []);
     expect(grade).toEqual(102, "The grades should be the same");
+
   });
 
   it('current grade should not change when all the games played are drawn with players of the same grade', () => {
@@ -27,7 +27,7 @@ describe("Calculating ECF drawn games", () => {
       result: 0
     }];
 
-    var grade = chessGradeCalculator.calculate(102, games, 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(102, games);
     expect(grade).toEqual(102, "The grades should be the same");
   });
 
@@ -39,7 +39,7 @@ describe("Calculating ECF drawn games", () => {
       result: 0
     }];
 
-    var grade = chessGradeCalculator.calculate(100, games, 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(100, games);
     expect(grade).toEqual(110, "The grades should be the same");
   });
 
@@ -51,7 +51,7 @@ describe("Calculating ECF drawn games", () => {
       result: 0
     }];
 
-    var grade = chessGradeCalculator.calculate(100, games, 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(100, games);
     expect(grade).toEqual(90, "The grades should be the same");
   });
 });

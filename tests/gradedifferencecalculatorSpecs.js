@@ -1,11 +1,14 @@
+var ChessGradeCalculator=require('../js/services/ChessGradeCalculator');
+
 describe("ECF Maximum grade difference rule", () => {
 
   beforeEach(function() {
   });
 
   var chessGradeCalculator;
-  beforeEach(function() {
-    chessGradeCalculator = service;
+
+  beforeEach(function () {
+    chessGradeCalculator= new ChessGradeCalculator();
   });
 
   it('grade should increase to 145 when a 100 grade beats a 150 grade ', () => {
@@ -16,7 +19,7 @@ describe("ECF Maximum grade difference rule", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate(100, games, 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(100, games);
     expect(grade).toEqual(145, "grade increases");
   });
 
@@ -28,7 +31,7 @@ describe("ECF Maximum grade difference rule", () => {
       result: -1
     }];
 
-    var grade = chessGradeCalculator.calculate(150, games, 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(150, games);
     expect(grade).toEqual(105, "grade decreases");
   });
 });

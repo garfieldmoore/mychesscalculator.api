@@ -1,12 +1,16 @@
+var ChessGradeCalculator=require('../js/services/ChessGradeCalculator');
+
 describe("ECF losing games", () => {
 
   beforeEach(function() {
   });
 
   var chessGradeCalculator;
-  beforeEach(function() {
-    chessGradeCalculator = service;
+
+  beforeEach(function () {
+    chessGradeCalculator= new ChessGradeCalculator();
   });
+
 
   it('grade should decrease to 85 when a 100 grade loses to a 120 grade', () => {
 
@@ -16,7 +20,7 @@ describe("ECF losing games", () => {
       result: -1
     }];
 
-    var grade = chessGradeCalculator.calculate(100, games, 'ECF');
+    var grade = chessGradeCalculator.calculateEcf(100, games);
     expect(grade).toEqual(85, "grade decreases");
   });
 });

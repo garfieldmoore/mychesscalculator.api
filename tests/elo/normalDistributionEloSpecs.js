@@ -1,13 +1,12 @@
+var ChessGradeCalculator=require('../../js/services/ChessGradeCalculator');
+
 describe("FIDE ELO wins", () => {
 
-  beforeEach(function() {
-  });
-
   var chessGradeCalculator;
-  beforeEach(function() {
-    chessGradeCalculator = chessGradeCalculator;
-  });
 
+  beforeEach(function () {
+    chessGradeCalculator= new ChessGradeCalculator();
+  });
 
   it('should calcuate a 2000 player beating a 2400 player twice as having new FIDE elo of 2037', () => {
 
@@ -23,7 +22,7 @@ describe("FIDE ELO wins", () => {
       }
     ];
 
-    var grade = chessGradeCalculator.calculate(2000, games, 'ELO-ND', 20);
+    var grade = chessGradeCalculator.calculateFide(2000, games, 20);
     expect(grade).toEqual(2037, "grade increases");
   });
 
@@ -35,7 +34,7 @@ describe("FIDE ELO wins", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate(2000, games, 'ELO-ND', 20);
+    var grade = chessGradeCalculator.calculateFide(2000, games, 20);
     expect(grade).toEqual(2000, "grade increases");
   });
 
@@ -47,7 +46,7 @@ describe("FIDE ELO wins", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate(2000, games, 'ELO-ND', 20);
+    var grade = chessGradeCalculator.calculateFide(2000, games, 20);
     expect(grade).toEqual(2020, "grade increases");
   });
 
@@ -59,7 +58,7 @@ describe("FIDE ELO wins", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate(2000, games, 'ELO-ND', 20);
+    var grade = chessGradeCalculator.calculateFide(2000, games, 20);
     expect(grade).toEqual(2020, "grade increases"); // actually 2019.8
   });
 
@@ -71,7 +70,7 @@ describe("FIDE ELO wins", () => {
       result: 1
     }];
 
-    var grade = chessGradeCalculator.calculate(2000, games, 'ELO-ND', 20);
+    var grade = chessGradeCalculator.calculateFide(2000, games, 20);
     expect(grade).toEqual(2019, "grade increases");
   });
 

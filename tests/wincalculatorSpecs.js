@@ -1,12 +1,16 @@
+var ChessGradeCalculator=require('../js/services/ChessGradeCalculator');
+
 describe("ECF Calculating wins", () => {
 
   beforeEach(function() {
   });
 
   var chessGradeCalculator;
-  beforeEach(function() {
-    chessGradeCalculator = chessGradeCalculator;
+
+  beforeEach(function () {
+    chessGradeCalculator= new ChessGradeCalculator();
   });
+
 
   it('grade should increase to 130 when a 100 grade beats a 110 grade', () => {
 

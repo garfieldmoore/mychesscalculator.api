@@ -1,5 +1,19 @@
 'use strict';
-var normalDistributionDifferenceLookup = [-9999, -735, -619, -559, -517, -484, -456, -432, -411, -391, -374, -357, -344, -328, -315, -302, -290, -278, -267, -256, -245, -235, -225, -215, -206, -197, -188, -179, -170, -162, -153, -145, -137, -129, -121, -113, -106, -98, -91, -83, -76, -68, -61, -53, -46, -39, -32, -25, -17, -10, -3,
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+  module.exports=NormalDistributionData;
+}
+
+function NormalDistributionData(){
+    return{
+      NormalDistributionDifferenceLookup: NormalDistributionDifferenceLookup,
+      NormalDistributionExpectedResultValues: NormalDistributionExpectedResultValues,
+      NormalDistributionPerformance: NormalDistributionPerformance,
+    }
+
+    function NormalDistributionDifferenceLookup(){
+
+        var normalDistributionDifferenceLookup = [-9999, -735, -619, -559, -517, -484, -456, -432, -411, -391, -374, -357, -344, -328, -315, -302, -290, -278, -267, -256, -245, -235, -225, -215, -206, -197, -188, -179, -170, -162, -153, -145, -137, -129, -121, -113, -106, -98, -91, -83, -76, -68, -61, -53, -46, -39, -32, -25, -17, -10, -3,
   0,
   4,
   11,
@@ -52,6 +66,12 @@ var normalDistributionDifferenceLookup = [-9999, -735, -619, -559, -517, -484, -
   620,
   735,
 ];
+  return normalDistributionDifferenceLookup;
+
+}
+
+function NormalDistributionExpectedResultValues(){
+
 
 var normalDistributionExpectedResultValues = [0.00,
   0.01,
@@ -156,6 +176,11 @@ var normalDistributionExpectedResultValues = [0.00,
   0.99,
   1.00
 ];
+ return normalDistributionExpectedResultValues;
+}
+
+function NormalDistributionPerformance(){
+
 
 var normalDistributionPerformance = [-800,
 -677,
@@ -260,3 +285,7 @@ var normalDistributionPerformance = [-800,
 677,
 800
 ];
+ return normalDistributionPerformance;
+}
+
+}

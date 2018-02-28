@@ -1,9 +1,28 @@
 'use strict';
-module.exports={
-  calculateFide:calculateFide,
-  calculateUscf:calculateUscf,
-  calculateEcf:calculateEcf,
-};
+var NormalDistributionData = require('./NormalDistributionData');
+
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+  module.exports= ChessGradeCalculator
+}
+
+function ChessGradeCalculator(){
+  return{
+    calculate: calculate,
+    calculateEcf: calculateEcf,
+    calculateFide: calculateFide,
+    calculateUscf: calculateUscf,
+  }
+console.log("creating chessGradeCalculator");
+
+var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
+var normalDistributionExpectedResultValues= new NormalDistributionData().NormalDistributionExpectedResultValues();
+
+
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+  module.exports = ChessGradeCalculator;
+}
 
   var kfactor = 10;
 
@@ -126,6 +145,9 @@ module.exports={
     // if (element == normalDistributionDifferenceLookup.length) {
     //   return true;
     // }
+    var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
+    var normalDistributionExpectedResultValues = new NormalDistributionData().NormalDistributionExpectedResultValues();
+
     var current = normalDistributionDifferenceLookup[element];
     var next = normalDistributionDifferenceLookup[element + 1];
     var isgreaterThanCurrent = difference >= current;
@@ -139,6 +161,10 @@ module.exports={
   function LookupExpectedWinPercentage(playerA, playerB) {
     var gradeDifference = playerA - playerB;
     var matchedChance = 0;
+
+    var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
+    var normalDistributionExpectedResultValues = new NormalDistributionData().NormalDistributionExpectedResultValues();
+
     for (var i = 0; i < normalDistributionDifferenceLookup.length; i++) {
       matchedChance = i;
       if (MatchedRange(gradeDifference, i)) {
@@ -199,16 +225,16 @@ module.exports={
   }
 
   function calculateEcf(currentgrade, games) {
-    return calculate(currentgrade, games, 'ECF', player1kFactor);
+    return calculate(currentgrade, games, 'ECF', 0);
   }
 
   function calculateUscf(currentgrade, games, player1kFactor) {
-    return calculate(currentgrade, games, 'USCF', player1kFactor);
+    return calculate(currentgrade, games, 'ELO', player1kFactor);
 
   }
 
   function calculateFide(currentgrade, games, player1kFactor) {
-    return calculate(currentgrade, games, 'FIDE', player1kFactor);
+    return calculate(currentgrade, games, 'ELO-ND', player1kFactor);
   }
 
   function calculate(currentgrade, games, chessFederation, player1kFactor) {
@@ -219,3 +245,4 @@ module.exports={
 
     return calculation.CalculationFrom(currentgrade, games, kfactor);
   }
+};
