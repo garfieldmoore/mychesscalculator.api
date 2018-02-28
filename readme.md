@@ -1,5 +1,7 @@
 # Chess Grade Calculator API
-This is the API for my chess rating calculator web app.
+API to calculate ELO and ECF chess grades.
+
+Node Learning project.
 
 ## HTTP API
 
