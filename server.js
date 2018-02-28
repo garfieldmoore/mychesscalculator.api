@@ -8,19 +8,27 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var apiRouter = express.Router();
 
+var dataStore = require('./js/services/dataStore');
+
 apiRouter.route('/games')
   .get(function(req, res){
     console.log("ENTER: GET /games");
     // get from local storage
 
-    var response= [
-      {id: 1, resultText:'Win', result:1, grade:1200},{id: 2, resultText:'Win', result:1, grade:1800}];
+    var response = dataStore.getGames();
+
+    console.log("Number of games: " + response.length);
+    console.log("games: " + response);
+
     res.json(response);
   })
   .post(function(req, res){
     console.log("ENTER: POST /games");
-    // persist to local storage
     console.log(req.body);
+
+    dataStore.save(req.body);
+    res.send(true);
+
   });
 
 apiRouter.route('/rating')
@@ -28,7 +36,10 @@ apiRouter.route('/rating')
       console.log("ENTER: GET /rating");
       // persist to local storage
       console.log(req.body);
+       dataStore.getGames();
+      // perform calculation
 
+      res.json({rating: 3000});
     });
 
   //CORS middleware
