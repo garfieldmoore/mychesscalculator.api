@@ -16,6 +16,9 @@ The below table describes the allowed endpoints and http verbs.
 | ```api/ratings/uscf/``` | GET  | Calculates USCF rating | [Rating ](#ratings) |
 |```api/statistics/```|GET|Calculates player stats | [Player statistics](#player-stats) |
 
+### Design Considerations
+
+
 
 ## JSON formats
 This section lists the JSON formats used / returned by the API end points.
@@ -31,7 +34,7 @@ However, eventually we will need to persist and retrieve these settings;
 {
   "kfactor": 20,
   "player":{
-    "grade": 200,
+    "initial_grade": 200,
   }  
 }
 
@@ -74,7 +77,7 @@ The endpoints for ratings return the same json object containing the result of t
 These are currently implemented client side and are included here for completeness as they will be moving onto the API eventually.
 
 ```json
-Stats[
+[
   {
     "name" : "stat name",
     "value": "statistic value",

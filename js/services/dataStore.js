@@ -1,13 +1,22 @@
 'use strict'
+if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
+{
+  module.exports=DataStore;
+}
 
-  var games=[];
+function DataStore(){
+    return {
+      save: save,
+      getGames: getGames,
+    }
 
-module.exports={
-    save: function (gamesToStore){
+    var games=[];
+
+    function save(gamesToStore){
       games=gamesToStore;
-    },
+    }
 
-    getGames: function (){
+    function getGames(){
       return games;
     }
-  };
+}

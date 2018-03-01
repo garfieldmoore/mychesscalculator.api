@@ -9,7 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var apiRouter = express.Router();
 
-var dataStore = require('./js/services/dataStore');
+var DataStore = require('./js/services/dataStore');
+dataStore = new DataStore();
 
 apiRouter.route('/games')
   .get(function(req, res){
