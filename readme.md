@@ -28,9 +28,9 @@ Initially, the settings are not persisted and it is assumed the grade starts at 
 However, eventually we will need to persist and retrieve these settings;
 
 ```json
-settings{
+{
   "kfactor": 20,
-  player{
+  "player":{
     "grade": 200,
   }  
 }
@@ -45,7 +45,7 @@ The grading body is required so that a player can add games across national and 
 The API currently stores and retrieves all games.
 
 ```json
-Games[
+[
 {
   "opponent": "name",
   "grade": "1200",
