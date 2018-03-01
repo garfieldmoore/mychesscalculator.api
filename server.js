@@ -41,8 +41,13 @@ apiRouter.route('/rating/ecf')
       console.log("query currentGrade: " + currentGrade);
 
       var rating=chessGradeCalculator.calculateEcf(currentGrade, dataStore.getGames());
+      var rating={
+        rating: rating,
+      };
 
-       res.json({rating: rating});
+      console.log("Rating: " + rating.rating);
+
+      res.json(rating);
     });
 
   apiRouter.route('/rating/fide')
@@ -59,8 +64,13 @@ apiRouter.route('/rating/ecf')
         }
 
         var rating=chessGradeCalculator.calculateFide(currentGrade, dataStore.getGames(), kfactor);
+        var rating={
+          rating: rating,
+        };
 
-        res.json({rating: rating});
+        console.log("Rating: " + rating.rating);
+
+        res.json(rating);
       });
 
   apiRouter.route('/rating/uscf')
@@ -77,14 +87,20 @@ apiRouter.route('/rating/ecf')
         }
 
         var rating=chessGradeCalculator.calculateUscf(currentGrade, dataStore.getGames(), kfactor);
+        var rating={
+          rating: rating,
+        };
 
-        res.json({rating: rating});
+        console.log("Rating: " + rating.rating);
+
+        res.json(rating);
       });
 
 
   //CORS middleware
   var allowCrossDomain = function(req, res, next) {
       res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
+      res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8081');
       res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
       res.header('Access-Control-Allow-Headers', 'Content-Type');
 
