@@ -17,6 +17,11 @@ The below table describes the allowed endpoints and http verbs.
 |```api/statistics/```|GET|Calculates player stats | [Stats Json](#Player-stats-JSON) |
 
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 ## JSON formats
 This section lists the JSON formats used / returned by the API end points.
 
