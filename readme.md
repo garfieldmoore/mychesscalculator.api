@@ -9,12 +9,12 @@ The below table describes the allowed endpoints and http verbs.
 
 | URL          | Method     |Description | Returns |
 | ------------ | ---------- |---------   |---------|
-| ```api/games/```  |GET    | Returns all a players Games| games |
-| ```api/games/```  | POST  | saves games| 200 |
-| ```api/ratings/ecf/```  | GET  | Calculates ECF rating | rating json |
-| ```api/ratings/fide/```  | GET  | Calculates FIDE rating | rating json |
-| ```api/ratings/uscf/``` | GET  | Calculates USCF rating | rating json |
-|```api/statistics/```|GET|Calculates player stats | [Stats Json](#player-stats-json) |
+| ```api/games/```  |GET    | Returns all a players Games| [Games ](#games) |
+| ```api/games/```  | POST  | saves games| [HTTP OK](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success) |
+| ```api/ratings/ecf/```  | GET  | Calculates ECF rating | [Rating ](#ratings) |
+| ```api/ratings/fide/```  | GET  | Calculates FIDE rating | [Rating ](#ratings) |
+| ```api/ratings/uscf/``` | GET  | Calculates USCF rating | [Rating ](#ratings) |
+|```api/statistics/```|GET|Calculates player stats | [Player statistics](#player-stats) |
 
 
 ## JSON formats
@@ -38,11 +38,11 @@ settings{
 ```
 
 #### Games
-The games will need to be persisted and retrieved.  This should contain, the name of the opponent, grade, the result of the game (0, 1, or -1) and the grading body.
+The games contain the name of the opponent, grade, the grading body and the result of the game (0, 1, or -1).
 
 The grading body is required so that a player can add games across national and international bodies.
 
-The API stores and retrieves all games.
+The API currently stores and retrieves all games.
 
 ```json
 Games[
@@ -70,7 +70,7 @@ The endpoints for ratings return the same json object containing the result of t
   }
 ```
 
-#### Player stats JSON
+#### Player stats
 These are implemented client side and are included here for completeness.
 
 ```json
