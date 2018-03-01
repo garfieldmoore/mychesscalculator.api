@@ -10,6 +10,18 @@ The below table describes the allowed endpoints and http verbs.
 | URL  | Method |Description | Returns |
 |-------------|----------|---------|
 
+|URL|Method|Description|Returns|
+|-------------|----------|---------|
+
+
+| URL  | Method |Description | Returns |
+|-------------|----------|---------|
+
+
+| URL  | Method |Description | Returns |
+
+|-------------|----------|---------|
+
 | ```api/games/```  |GET   | Returns all a players Games| games |
 | ```api/games/```  | POST  | saves games| 200 |
 | ```api/ratings/ecf/```  | GET  | Calculates ECF rating | rating json |
