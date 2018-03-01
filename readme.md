@@ -29,9 +29,9 @@ However, eventually we will need to persist and retrieve these settings;
 
 ```json
 settings{
-  kfactor: 20,
+  "kfactor": 20,
   player{
-    grade: 200,
+    "grade": 200,
   }  
 }
 
@@ -47,15 +47,15 @@ The API currently stores and retrieves all games.
 ```json
 Games[
 {
-  opponent: "name",
-  grade: "1200",
-  result: "0 | 1 | -1",
-  grading_body: "FIDE | USCF | ECF"
+  "opponent": "name",
+  "grade": "1200",
+  "result": "0 | 1 | -1",
+  "grading_body": "FIDE | USCF | ECF"
 },
 {
-  opponent: "player 2",
-  grade: "1500",
-  result: "0 | 1 | -1"
+  "opponent": "player 2",
+  "grade": "1500",
+  "result": "0 | 1 | -1"
 },
 
 ]
@@ -66,7 +66,7 @@ The endpoints for ratings return the same json object containing the result of t
 
 ```json
   {
-    rating:200,
+    "rating":200,
   }
 ```
 
@@ -76,8 +76,8 @@ These are implemented client side and are included here for completeness.
 ```json
 Stats[
   {
-    name : "stat name",
-    value: "statistic value",
+    "name" : "stat name",
+    "value": "statistic value",
   }
 ]
 
