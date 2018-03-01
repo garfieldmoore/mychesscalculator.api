@@ -71,7 +71,7 @@ The endpoints for ratings return the same json object containing the result of t
 ```
 
 #### Player stats
-These are implemented client side and are included here for completeness.
+These are currently implemented client side and are included here for completeness as they will be moving onto the API eventually.
 
 ```json
 Stats[
