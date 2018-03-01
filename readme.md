@@ -9,18 +9,13 @@ The below table describes the allowed endpoints and http verbs.
 
 | URL          | Method     |Description | Returns |
 | ------------ | ---------- |---------   |---------|
-| ```api/games/```  |GET   | Returns all a players Games| games |
+| ```api/games/```  |GET    | Returns all a players Games| games |
 | ```api/games/```  | POST  | saves games| 200 |
 | ```api/ratings/ecf/```  | GET  | Calculates ECF rating | rating json |
 | ```api/ratings/fide/```  | GET  | Calculates FIDE rating | rating json |
 | ```api/ratings/uscf/``` | GET  | Calculates USCF rating | rating json |
-|```api/statistics/```|GET|Calculates player stats | [Stats Json](#Player-stats-JSON) |
+|```api/statistics/```|GET|Calculates player stats | [Stats Json](#player-stats-json) |
 
-
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
 
 ## JSON formats
 This section lists the JSON formats used / returned by the API end points.
