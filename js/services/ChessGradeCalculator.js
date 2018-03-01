@@ -1,10 +1,10 @@
 'use strict';
-var NormalDistributionData = require('./NormalDistributionData');
-
 if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 {
-  module.exports= ChessGradeCalculator
+  module.exports= ChessGradeCalculator;
 }
+
+var NormalDistributionData = require('./NormalDistributionData');
 
 function ChessGradeCalculator(){
   return{
@@ -17,12 +17,6 @@ console.log("creating chessGradeCalculator");
 
 var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
 var normalDistributionExpectedResultValues= new NormalDistributionData().NormalDistributionExpectedResultValues();
-
-
-if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
-{
-  module.exports = ChessGradeCalculator;
-}
 
   var kfactor = 10;
 

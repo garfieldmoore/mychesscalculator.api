@@ -1,6 +1,4 @@
 var express = require('express');
-var ChessGradeCalculator = require('./js/services/ChessGradeCalculator');
-var chessGradeCalculator = new ChessGradeCalculator();
 var app = express();
 
 var bodyParser = require('body-parser');
@@ -9,94 +7,42 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 var apiRouter = express.Router();
 
-var DataStore = require('./js/services/dataStore');
-dataStore = new DataStore();
+var GamesController = require('./js/Controllers/GamesController');
+var RatingController = require('./js/Controllers/RatingController');
+
+var gamesController = new GamesController();
+var ratingController = new RatingController();
+
+console.log("Configuring routes:")
+
+if (gamesController == undefined){
+  console.log("Games route failed")
+}
+
+if (gamesController.get == undefined){
+  console.log("Games GET route failed")
+}
+
+if (gamesController.post == undefined){
+  console.log("Games POST route failed")
+}
+
+if (ratingController == undefined){
+  console.log("Rating route failed")
+}
 
 apiRouter.route('/games')
-  .get(function(req, res){
-    console.log("ENTER: GET /games");
-    // get from local storage
-
-    var response = dataStore.getGames();
-
-    console.log("Number of games: " + response.length);
-    console.log("games: " + response);
-
-    res.json(response);
-  })
-  .post(function(req, res){
-    console.log("ENTER: POST /games");
-    console.log(req.body);
-
-    dataStore.save(req.body);
-    res.send(true);
-
-  });
+  .get(gamesController.get)
+  .post(gamesController.post);
 
 apiRouter.route('/rating/ecf')
-    .get(function(req, res){
-      console.log("ENTER: GET /rating/ecf");
-      console.log(req.body);
-
-      var currentGrade = parseInt(req.query.currentgrade);
-      console.log("query currentGrade: " + currentGrade);
-
-      var rating=chessGradeCalculator.calculateEcf(currentGrade, dataStore.getGames());
-      var rating={
-        rating: rating,
-      };
-
-      console.log("Rating: " + rating.rating);
-
-      res.json(rating);
-    });
+    .get(ratingController.getEcfRating);
 
   apiRouter.route('/rating/fide')
-      .get(function(req, res){
-        console.log("ENTER: GET /rating/fide");
-
-        var currentGrade = parseInt(req.query.currentgrade);
-        console.log("query currentGrade: " + currentGrade);
-        var kfactor=req.query.kfactor;
-        console.log("Kfactor: " + kfactor);
-
-        if (kfactor == undefined){
-          kfactor=20; //default
-        }
-
-        var rating=chessGradeCalculator.calculateFide(currentGrade, dataStore.getGames(), kfactor);
-        var rating={
-          rating: rating,
-        };
-
-        console.log("Rating: " + rating.rating);
-
-        res.json(rating);
-      });
+      .get(ratingController.getFideRating);
 
   apiRouter.route('/rating/uscf')
-      .get(function(req, res){
-        console.log("ENTER: GET /rating/uscf");
-        // persist to local storage
-        var currentGrade = parseInt(req.query.currentgrade);
-        console.log("query currentGrade: " + currentGrade);
-        var kfactor=req.query.kfactor;
-        console.log("Kfactor: " + kfactor);
-
-        if (kfactor == undefined){
-          kfactor=20; //default
-        }
-
-        var rating=chessGradeCalculator.calculateUscf(currentGrade, dataStore.getGames(), kfactor);
-        var rating={
-          rating: rating,
-        };
-
-        console.log("Rating: " + rating.rating);
-
-        res.json(rating);
-      });
-
+      .get(ratingController.getUscfRating);
 
   //CORS middleware
   var allowCrossDomain = function(req, res, next) {
