@@ -14,6 +14,7 @@ The below table describes the allowed endpoints and http verbs.
 | ```api/ratings/ecf/```  | GET  | Calculates ECF rating | rating json |
 | ```api/ratings/fide/```  | GET  | Calculates FIDE rating | rating json |
 | ```api/ratings/uscf/``` | GET  | Calculates USCF rating | rating json |
+|```api/statistics/```|GET|Calculates player stats | [Stats Json](#Player-stats-JSON) |
 
 
 ## JSON formats
@@ -65,7 +66,7 @@ The endpoints for ratings return the same json object containing the result of t
 
 ```json
   {
-    grade:200,
+    rating:200,
   }
 ```
 
