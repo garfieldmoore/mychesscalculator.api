@@ -7,17 +7,10 @@ if ( typeof module !== 'undefined' && module.hasOwnProperty('exports') )
 var NormalDistributionData = require('./NormalDistributionData');
 
 function ChessGradeCalculator(){
-  return{
-    calculate: calculate,
-    calculateEcf: calculateEcf,
-    calculateFide: calculateFide,
-    calculateUscf: calculateUscf,
-  };
-
+  var kfactor = 10;
   var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
   var normalDistributionExpectedResultValues= new NormalDistributionData().NormalDistributionExpectedResultValues();
 
-  var kfactor = 10;
 
   function IsValid(currentgrade) {
     return currentgrade != 'undefined' && currentgrade > 0 && !isNaN(currentgrade);
@@ -236,4 +229,13 @@ function ChessGradeCalculator(){
 
     return calculation.CalculationFrom(currentgrade, games, kfactor);
   }
+
+  return{
+    calculate: calculate,
+    calculateEcf: calculateEcf,
+    calculateFide: calculateFide,
+    calculateUscf: calculateUscf,
+  };
+
+
 }
