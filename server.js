@@ -1,3 +1,5 @@
+'use strict';
+
 console.log("Loading dependencies:");
 var express = require('express');
 var GamesController = require('./js/Controllers/GamesController');
@@ -28,7 +30,7 @@ apiRouter.route('/rating/ecf')
       .get(ratingController.getUscfRating);
 
 console.log("Configuring middleware");
-  //CORS middleware
+  // CORS middleware for local test environment
   var allowCrossDomain = function(req, res, next) {
       res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8080');
       res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -54,3 +56,5 @@ var server = app.listen(port, function () {
   console.log('Server running at http://127.0.0.1:' + port + '/');
 
 });
+
+module.exports = app;

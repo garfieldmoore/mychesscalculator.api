@@ -7,14 +7,18 @@ Node Learning project.
 
 The below table describes the allowed endpoints and http verbs.
 
-| URL          | Method     |Description | Returns |
-| ------------ | ---------- |---------   |---------|
-| ```api/games/```  |GET    | Returns all a players Games| [Games ](#games) |
-| ```api/games/```  | POST  | saves games| [HTTP OK](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success) |
-| ```api/ratings/ecf/```  | GET  | Calculates ECF rating | [Rating ](#ratings) |
-| ```api/ratings/fide/```  | GET  | Calculates FIDE rating | [Rating ](#ratings) |
-| ```api/ratings/uscf/``` | GET  | Calculates USCF rating | [Rating ](#ratings) |
-|```api/statistics/```|GET|Calculates player stats | [Player statistics](#player-stats) |
+| URL          | Method     | Body |Description | Returns |
+| ------------ | ---------- |------|---------   |---------|
+| ```api/games/```  |GET    | N/A |Returns all a players Games| [Games ](#games) |
+|```api/games/{id}```|DELETE|N/A|Delete the resoucrce identified by {id}. Not implemented| OK |
+| ```api/games/```  | POST  | List of [Games ](#games) | saves games| [HTTP OK](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success) |
+| ```api/games/```  | POST  | Game | Adds new game. Not implemented | [HTTP OK and body response with game with Id](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#2xx_Success) |
+| ```api/ratings/```  | GET | N/A | Shortcut method to return rating calculations for all federations | [All Rating ](#all-ratings) |
+| ```api/ratings/ecf/```  | GET  |N/A| Calculates ECF rating | [Rating ](#ratings) |
+| ```api/ratings/fide/```  | GET  |N/A| Calculates FIDE rating | [Rating ](#ratings) |
+| ```api/ratings/uscf/``` | GET  |N/A| Calculates USCF rating | [Rating ](#ratings) |
+|```api/statistics/```|GET|N/A|Calculates player stats | [Player statistics](#player-stats) |
+||||
 
 ### Design Considerations
 
@@ -70,6 +74,16 @@ The endpoints for ratings return the same json object containing the result of t
 ```json
   {
     "rating":200,
+  }
+```
+
+#### Ratings
+
+```json
+  {
+    "ecf_rating":200,
+    "fide_rating":1600,
+    "uscf_rating":1450,
   }
 ```
 

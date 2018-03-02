@@ -1,1 +1,1 @@
-jasmine tests/**.js tests/elo/**.js
+jasmine tests/**.js tests/elo/**.js acceptanceTests/**.js
