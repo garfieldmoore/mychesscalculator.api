@@ -9,7 +9,7 @@ module.exports = function(grunt) {
       src: 'js/**/*.js',
       vendor: ['js/angular.min.js'],
       options: {
-        specs: 'tests/**/*Specs.js',
+        specs: 'tests/**/*.js',
         vendor: ['js/angular.min.js'],
         // template: require('grunt-template-jasmine-requirejs'),
         templateOptions: {
@@ -39,18 +39,19 @@ module.exports = function(grunt) {
           console: true,
           normalDistributionDifferenceLookup: true,
           normalDistributionExpectedResultValues: true,
-
         },
       },
     },
 
     watch: {
-    //   files: ['tests/**/*Specs.js','js/**/*.js', 'js/Controllers/*.js', 'js/services/*.js', './*.html', '.jshintrc'],
-    //   tasks: ['jshint'],
-    //   options: {
-    //     reload: true,
-    //     livereload: true,
-    //   },
+      //   specs:{
+      //     files: ['tests/**.js','js/**/*.js', 'acceptanceTests/**.js', 'js/**.js', 'js/**/**.js'],
+      //     tasks: ['jasmine'],
+      //     options: {
+      //       reload: true,
+      //       livereload: true,
+      //     },
+      // },
       js:{
         files: ['/js/**.js', 'js/**/**.js'],
         tasks: ['jshint']
