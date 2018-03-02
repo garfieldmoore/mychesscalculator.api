@@ -10,7 +10,7 @@ function GamesController(){
   return{
     get: get,
     post: post,
-  }
+  };
 
   function get(req, res){
     console.log("ENTER: GET /games");

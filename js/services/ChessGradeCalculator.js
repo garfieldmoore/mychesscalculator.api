@@ -12,11 +12,10 @@ function ChessGradeCalculator(){
     calculateEcf: calculateEcf,
     calculateFide: calculateFide,
     calculateUscf: calculateUscf,
-  }
-console.log("creating chessGradeCalculator");
+  };
 
-var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
-var normalDistributionExpectedResultValues= new NormalDistributionData().NormalDistributionExpectedResultValues();
+  var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
+  var normalDistributionExpectedResultValues= new NormalDistributionData().NormalDistributionExpectedResultValues();
 
   var kfactor = 10;
 
@@ -136,9 +135,7 @@ var normalDistributionExpectedResultValues= new NormalDistributionData().NormalD
   }
 
   function MatchedRange(difference, element) {
-    // if (element == normalDistributionDifferenceLookup.length) {
-    //   return true;
-    // }
+
     var normalDistributionDifferenceLookup = new NormalDistributionData().NormalDistributionDifferenceLookup();
     var normalDistributionExpectedResultValues = new NormalDistributionData().NormalDistributionExpectedResultValues();
 
@@ -239,4 +236,4 @@ var normalDistributionExpectedResultValues= new NormalDistributionData().NormalD
 
     return calculation.CalculationFrom(currentgrade, games, kfactor);
   }
-};
+}

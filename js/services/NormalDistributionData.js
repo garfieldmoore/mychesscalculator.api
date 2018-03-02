@@ -9,7 +9,7 @@ function NormalDistributionData(){
       NormalDistributionDifferenceLookup: NormalDistributionDifferenceLookup,
       NormalDistributionExpectedResultValues: NormalDistributionExpectedResultValues,
       NormalDistributionPerformance: NormalDistributionPerformance,
-    }
+    };
 
     function NormalDistributionDifferenceLookup(){
 
@@ -180,7 +180,6 @@ var normalDistributionExpectedResultValues = [0.00,
 }
 
 function NormalDistributionPerformance(){
-
 
 var normalDistributionPerformance = [-800,
 -677,

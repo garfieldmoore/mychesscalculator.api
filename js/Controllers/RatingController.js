@@ -13,7 +13,7 @@ function RatingController(){
     getEcfRating: getEcfRating,
     getFideRating: getFideRating,
     getUscfRating: getUscfRating,
-  }
+  };
 
   function getEcfRating(req, res){
     console.log("ENTER: GET /rating/ecf");
@@ -24,9 +24,10 @@ function RatingController(){
 
     var chessGradeCalculator = new ChessGradeCalculator();
     var dataStore= new DataStore();
-    var rating=chessGradeCalculator.calculateEcf(currentGrade, dataStore.getGames());
+    var ratingEcf=chessGradeCalculator.calculateEcf(currentGrade, dataStore.getGames());
+
     var rating={
-      rating: rating,
+      rating: ratingEcf,
     };
 
     console.log("Rating: " + rating.rating);
@@ -48,9 +49,9 @@ function RatingController(){
 
     var dataStore= new DataStore();
     var chessGradeCalculator = new ChessGradeCalculator();
-    var rating=chessGradeCalculator.calculateFide(currentGrade, dataStore.getGames(), kfactor);
+    var ratingFide=chessGradeCalculator.calculateFide(currentGrade, dataStore.getGames(), kfactor);
     var rating={
-      rating: rating,
+      rating: ratingFide,
     };
 
     console.log("Rating: " + rating.rating);
@@ -72,9 +73,9 @@ function RatingController(){
 
     var dataStore = new DataStore();
     var chessGradeCalculator = new ChessGradeCalculator();
-    var rating=chessGradeCalculator.calculateUscf(currentGrade, dataStore.getGames(), kfactor);
+    var ratingUscf=chessGradeCalculator.calculateUscf(currentGrade, dataStore.getGames(), kfactor);
     var rating={
-      rating: rating,
+      rating: ratingUscf,
     };
 
     console.log("Rating: " + rating.rating);
